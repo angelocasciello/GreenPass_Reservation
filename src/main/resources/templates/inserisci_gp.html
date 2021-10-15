@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Green Pass Cliente - GreenPass Reservation</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<style>
+.client_button {
+  text-decoration: none;
+  outline: none;
+  display: inline-block;
+  padding: 12px 40px;
+  margin: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  background-image: linear-gradient(45deg, #6ab1d7 0%, #33d9de 50%, #002878 100%);
+  background-position: 100% 0;
+  background-size: 200% 200%;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: white;
+  box-shadow: 0 16px 32px 0 rgba(0,40,120,.35);
+  transition: .5s;
+}
+</style>
+</head>
+<body>
+
+	<div class = "container text-center">
+		<div>
+			<form th:action="@{/form_inserimento_gp}">
+				<input type="submit" class="client_button" value = "Inserisci Green Pass"/> 
+			</form>
+       		<h4><a th:href="@{/dashboard_cliente}">Clicca qui per tornare alla dashboard.</a></h4>
+		</div>
+		
+	</div>
+</body>
+</html>

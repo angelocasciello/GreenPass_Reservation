@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" 
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Inserimento Green Pass - GreenPass Reservation</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript">
+function clicked(e)
+{
+    if(!confirm('N.B.\n\nIl codice inserito deve essere associato al tuo Green Pass.\n\nConfermi?')) {
+        e.preventDefault();
+    }
+}
+
+</script>
+</head>
+<body>
+		<div class = "container text-center">
+		<div>
+			<h1>Inserimento Green Pass</h1>
+		</div>
+		<div>
+			<form th:action="@{/creazione_gp}" method="post"
+			th:object="${GPcliente}" style="max-width: 600px; margin: 0 auto;">
+			<div class="m-3">
+					
+				<div class="form-group row">
+					<label class="col-form-label col-4">Codice Identificativo Green Pass</label>
+					<div class="col-8">
+						<input type = "text" class="form-control" name = "uci_gp" required
+							minlength="38" maxlength="38" />
+					</div>
+				</div>
+
+				<div>
+					<button type="submit" class="btn btn-primary" onclick="clicked(event)">Inserisci Green Pass</button>
+				</div>
+
+			</div>
+			</form>
+		</div>
+		
+	</div>
+</body>
+</html>

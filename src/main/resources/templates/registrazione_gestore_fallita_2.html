@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Registrazione - GreenPass Reservation</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<style>
+		.error{
+			color: #D8000C;
+			background-color: #FFBABA;
+			background-image: url('https://i.imgur.com/GnyDvKN.png');
+			border: 1px solid;
+			margin: 10px 0px;
+			padding: 15px 10px 15px 50px;
+			background-repeat: no-repeat;
+			background-position: 10px center;
+		}
+</style>
+</head>
+<body>
+	<div class = "container text-center">
+		<div class="error">Errore: il nome dell'organizzazione inserito risulta gi&agrave presente.<br>Per favore, modificare i dati inseriti e riprovare.</div>
+		<div>
+			<h1>Registrazione Gestore</h1>
+		</div>
+		<div>
+			<form th:action="@{/registrazione_gestore}" method="post"
+			style="max-width: 600px; margin: 0 auto;"
+			th:object="${gestore}">
+			<div class="m-3">
+			
+				<div class="form-group row">
+					<label class="col-form-label col-4">E-mail</label>
+					<div class="col-8">
+						<input type = "email" class="form-control" th:field="*{email}" required />
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-4">Password</label>
+					<div class="col-8">
+						<input type = "password" class="form-control" th:field="*{password}" required
+							minlength="6" maxlength="64" />
+					</div>
+				</div>
+					
+				<div class="form-group row">
+					<label class="col-form-label col-4">Nome</label>
+					<div class="col-8">
+						<input type = "text" class="form-control" th:field="*{nome}" required
+							minlength="2" maxlength="20" />
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-4">Cognome</label>
+					<div class="col-8">
+						<input type = "text" class="form-control" th:field="*{cognome}" required
+						minlength="2" maxlength="20" />
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-4">Organizzazione</label>
+					<div class="col-8">
+						<input type = "text" class="form-control" th:field="*{organizzazione}" required
+						minlength="2" maxlength="20" />
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-4">Data di nascita</label>
+					<div class="col-8">
+						<input type = "date" class="form-control" th:field="*{data_nascita}" required
+						   min="1921-01-01" max="2021-01-01" />
+					</div>
+				</div>
+					
+				<div class="form-group row">
+					<label class="col-form-label col-4">Luogo di nascita</label>
+					<div class="col-8">
+						<input type = "text" class="form-control" th:field="*{luogo_nascita}" required
+						minlength="2" maxlength="20" />
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-4">Numero di telefono</label>
+					<div class="col-8">
+						<input type = "tel" class="form-control" pattern="[0-9]{10}" placeholder="0000000000" th:field="*{num_telefono}" required
+						minlength="10" maxlength="10" />
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-4">Partita IVA</label>
+					<div class="col-8">
+						<input type = "text" name="partitaIva" pattern="[0-9]{11}" placeholder="00000000000" minlength="11" maxlength="11" class="form-control" th:field="*{partita_iva}" required />
+					</div>
+				</div>
+					
+				<div>
+					<button type="submit" class="btn btn-primary">Registrati</button>
+				</div>
+
+			</div>
+			</form>
+		</div>
+		
+	</div>
+</body>
+</html>

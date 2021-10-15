@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Green Pass Cliente - GreenPass Reservation</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<style>
+tr.spacer td {
+    border: none;
+    color: transparent;
+}
+.outlined {
+  border-right: 1px solid gainsboro;
+  border-left: 1px solid gainsboro;
+}
+div.centre {
+  width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+</head>
+<script type="text/javascript">
+
+function clicked(e)
+{
+    if(!confirm('Eliminando il Green Pass non potrai effettuare prenotazioni.\n\nConfermi?')) {
+        e.preventDefault();
+    }
+}
+
+</script>
+
+<body>
+
+	<div class = "container text-center">
+			<div>
+        <h1>Il mio Green Pass</h1>
+    </div>
+    
+    <div>
+        
+        <table class="table table-striped table-borderless">
+          <colgroup>
+    			<col>
+   				 <col class="outlined">
+    			<col span="2">
+ 		  </colgroup>
+        	<thead class="thead-dark">
+        		<tr>
+        			<th>Uci GP</th>
+        			<th>Data Scadenza</th>
+        		</tr>
+        	</thead>
+        	<tbody>
+        		<tr>
+        			<td th:text="${green_pass_cliente.uci_gp}">Codice Green Pass</td>
+        			<td th:text="${green_pass_cliente.data_scadenza}">Data Scadenza</td>
+        		</tr>
+        	</tbody>
+       </table>
+        			<div class ="centre"><form th:action="@{/elimina_gp}" method="post">
+						<input type="submit" value = "Elimina" onclick="clicked(event)" style="background-color:white"/> 
+					</form></div>
+        
+    </div>
+       <h4><a th:href="@{/dashboard_cliente}">Clicca qui per tornare alla dashboard.</a></h4>
+</div>			
+
+
+
+</body>
+</html>

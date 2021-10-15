@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Registrazione - GreenPass Reservation</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+<body>
+	<div class = "container text-center">
+		<div>
+			<h1>Registrazione Cliente</h1>
+		</div>
+		<div>
+			<form th:action="@{/registrazione_cliente}" method="post"
+			style="max-width: 600px; margin: 0 auto;"
+			th:object="${cliente}">
+			<div class="m-3">
+			
+				<div class="form-group row">
+					<label class="col-form-label col-4">E-mail</label>
+					<div class="col-8">
+						<input type = "email" class="form-control" th:field="*{email}" required />
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-4">Password</label>
+					<div class="col-8">
+						<input type = "password" class="form-control" th:field="*{password}" required
+							minlength="6" maxlength="64" />
+					</div>
+				</div>
+					
+				<div class="form-group row">
+					<label class="col-form-label col-4">Nome</label>
+					<div class="col-8">
+						<input type = "text" class="form-control" th:field="*{nome}" required
+							minlength="2" maxlength="50" />
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-4">Cognome</label>
+					<div class="col-8">
+						<input type = "text" class="form-control" th:field="*{cognome}" required
+						minlength="2" maxlength="50" />
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-4">Data di nascita</label>
+					<div class="col-8">
+						<input type = "date" id = "somedate" class="form-control" th:field="*{data_nascita}" required
+						   min="1900-01-01"  />
+					</div>
+				</div>
+					
+				<div class="form-group row">
+					<label class="col-form-label col-4">Luogo di nascita</label>
+					<div class="col-8">
+						<input type = "text" class="form-control" th:field="*{luogo_nascita}" required
+						minlength="2" maxlength="50" />
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-4">Numero di telefono</label>
+					<div class="col-8">
+						<input type = "tel" class="form-control" pattern="[0-9]{10}" placeholder="0000000000" th:field="*{num_telefono}" required
+						minlength="10" maxlength="10" />
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-form-label col-4">Codice Fiscale</label>
+					<div class="col-8">
+						<input type = "text" class="form-control" th:field="*{codice_fiscale}" required
+						minlength="16" maxlength="16" />
+					</div>
+				</div>
+				
+				</div>
+				<div>
+					<button type="submit" class="btn btn-primary">Registrati</button>
+				</div>
+
+			</div>
+			</form>
+		</div>
+		
+	</div>
+	
+	  						<script type="text/javascript">
+						    document.getElementById("somedate").max = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split("T")[0];
+						</script>
+</body>
+</html>

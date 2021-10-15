@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Eventi Gestore - GreenPass Reservation</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+<script type="text/javascript">
+function clicked(e)
+{
+    if(!confirm('Sei sicuro?')) {
+        e.preventDefault();
+    }
+}
+
+</script>
+<body>
+
+	<div class = "container text-center">
+		<div>
+        <h1>I miei Eventi</h1>
+    </div>
+     
+    <div>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Codice evento</th>
+                    <th>Nome</th>
+                    <th>Data</th>
+                    <th>Orario</th>
+                    <th>Luogo</th>
+                    <th>Posti disponibili</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="evento: ${listEventi}">
+                    <td th:text="${evento.codice_evento}">Codice evento</td>
+                    <td th:text="${evento.nome}">Nome</td>
+                    <td th:text="${evento.data}">Data</td>
+                    <td th:text="${evento.orario}">Orario</td>
+                    <td th:text="${evento.luogo}">Luogo</td>
+                    <td th:text="${evento.num_posti_disponibili}">Posti disponibili</td>
+                    <td><form th:action="@{/form_modifica_evento}">
+						<input type="hidden" name = "codice_evento" th:value = "${evento.codice_evento}" readonly /> 
+						<input type="submit" value = "Modifica" style="background-color:white"/> 
+					</form></td>
+					<td><form th:action="@{/elimina_evento}" method="post">
+						<input type="hidden" name = "codice_evento" th:value = "${evento.codice_evento}" readonly /> 
+						<input type="submit" value = "Elimina" onclick="clicked(event)" style="background-color:white"/> 
+					</form></td>
+					<td><form th:action="@{/visualizza_prenotazioni_evento}">
+						<input type="hidden" name = "codice_evento" th:value = "${evento.codice_evento}" readonly /> 
+						<input type="submit" value = "Visualizza prenotazioni" style="background-color:white"/> 
+					</form></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    			<h4><a th:href="@{/dashboard_gestore}">Clicca qui per tornare alla dashboard.</a></h4>
+</div>
+
+
+
+</body>
+</html>

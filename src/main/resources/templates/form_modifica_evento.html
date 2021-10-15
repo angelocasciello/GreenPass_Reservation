@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Modifica Evento - GreenPass Reservation</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<style>
+tr.spacer td {
+    border: none;
+    color: transparent;
+}
+.outlined {
+  border-right: 1px solid gainsboro;
+  border-left: 1px solid gainsboro;
+}
+</style>
+</head>
+
+<body>
+
+	<div class = "container text-center">
+			<div>
+        <h1>Modifica Evento</h1>
+    </div>
+    
+    <div>
+        
+        <table class="table table-striped table-borderless">
+          <colgroup>
+    			<col>
+   				 <col class="outlined">
+    			<col span="2">
+ 		  </colgroup>
+        	<thead class="thead-dark">
+        		<tr>
+        			<th>Nome</th>
+        			<th>Nuovo Nome</th>
+        			<th></th>
+        		</tr>
+        	</thead>
+        	<tbody>
+        		<tr>
+        			<td th:text="${evento.nome}">Nome</td>
+        			<form th:action="@{/modifica_nome_evento}" method="post"><td>
+        				<input type = "hidden" th:value="${evento.codice_evento}" name = "codice_evento" id = "codice_evento" />
+						<input type = "text" class="form-control" name = "nome" id ="name" required
+							minlength="2" maxlength="50" />
+        			</td>
+        			<td><button type="submit" style="background-color:white">Modifica</button></td></form>
+        		</tr>
+        	</tbody>
+        
+        	<thead class="thead-dark">
+        	 <tr class="spacer"><td colspan="4">&nbsp;</td></tr>
+        		<tr>
+        			<th>Data</th>
+        			<th>Nuova Data</th>
+        			<th></th>
+        		</tr>
+        	</thead>
+        	<tbody>
+        		<tr>
+        			<td th:text="${evento.data}">Data</td>
+        			<form th:action="@{/modifica_data_evento}" method="post"><td>
+        			    <input type = "hidden" th:value="${evento.codice_evento}" name = "codice_evento" id = "codice_evento" />
+						<input id ="date" name = "date" type = "date" class="form-control" required 
+						min="2021-08-01" max="2030-08-31"/>
+        			</td>
+        			<td><button type="submit" style="background-color:white">Modifica</button></td></form>
+        		</tr>
+        	</tbody>
+        
+             <thead class="thead-dark">
+        	 <tr class="spacer"><td colspan="4">&nbsp;</td></tr>
+        		<tr>
+        			<th>Orario</th>
+        			<th>Nuovo Orario</th>
+        			<th></th>
+        		</tr>
+        	</thead>
+        	<tbody>
+        		<tr>
+        			<td th:text="${evento.orario}">Orario</td>
+        			<form th:action="@{/modifica_orario_evento}" method="post"><td>
+        			    <input type = "hidden" th:value="${evento.codice_evento}" name = "codice_evento" id = "codice_evento" />
+						<input id ="orario" name = "orario" type = "time" class="form-control" required />
+        			</td>
+        			<td><button type="submit" style="background-color:white">Modifica</button></td></form>
+        		</tr>
+        	</tbody>
+        	
+        	<thead class="thead-dark">
+        	 <tr class="spacer"><td colspan="4">&nbsp;</td></tr>
+        		<tr>
+        			<th>Luogo</th>
+        			<th>Nuovo Luogo</th>
+        			<th></th>
+        		</tr>
+        	</thead>
+        	<tbody>
+        		<tr>
+        			<td th:text="${evento.luogo}">Luogo</td>
+        			<form th:action="@{/modifica_luogo_evento}" method="post"><td>
+        				<input type = "hidden" th:value="${evento.codice_evento}" name = "codice_evento" id = "codice_evento" />
+						<input type = "text" class="form-control" name = "luogo" id = "luogo" required
+						minlength="2" maxlength="50" />
+        			</td>
+        			<td><button type="submit" style="background-color:white">Modifica</button></td></form>
+        		</tr>
+        	</tbody>
+
+        	<thead class="thead-dark">
+        	 <tr class="spacer"><td colspan="4">&nbsp;</td></tr>
+        		<tr>
+        			<th>Posti disponibili</th>
+        			<th>Nuovi Posti disponibili</th>
+        			<th></th>
+        		</tr>
+        	</thead>
+        	<tbody>
+        		<tr>
+        			<td th:text="${evento.num_posti_disponibili}">Posti disponibili</td>
+        			<form th:action="@{/modifica_num_posti_evento}" method="post"><td>
+        			    <input type = "hidden" th:value="${evento.codice_evento}" name = "codice_evento" id = "codice_evento" />
+						<input type = "number" class="form-control" name = "num_posti_disponibili" id ="num_posti_disponibili" required
+						min="0" max="100000" />
+        			</td>
+        			<td><button type="submit" style="background-color:white">Modifica</button></td></form>
+        		</tr>
+        	</tbody>
+        	
+        </table>
+  						<script type="text/javascript">
+						    document.getElementById("date").min = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split("T")[0];
+						</script>
+        
+    </div>
+			<h4><a href="javascript:history.back()">Torna a I miei eventi</a></h4>
+</div>			
+
+
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Home - GreenPass Reservation</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab+Highlight:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+a {
+  text-decoration: none;
+  outline: none;
+  display: inline-block;
+  padding: 12px 40px;
+  margin: 10px 20px;
+  border-radius: 30px;
+  background-image: linear-gradient(45deg, #6ab1d7 0%, #33d9de 50%, #002878 100%);
+  background-position: 100% 0;
+  background-size: 200% 200%;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: white;
+  box-shadow: 0 16px 32px 0 rgba(0,40,120,.35);
+  transition: .5s;
+}
+a:hover {
+  box-shadow: 0 0 0 0 rgba(0,40,120,0);
+  background-position: 0 0;
+  color: blue;
+}
+
+h1{
+	color: green;
+	margin: 0;
+	padding: 6px 0px 30px 0px;
+	font-size: 51px;
+	line-height: 44px;
+	letter-spacing: -2px;
+	font-weight: bold;
+}
+.OutlineText {
+	font: Tahoma, Geneva, sans-serif;
+	font-size: 64px;
+    color: white;
+    text-shadow:
+    /* Outline */
+    -1px -1px 0 #000000,
+    1px -1px 0 #000000,
+    -1px 1px 0 #000000,
+    1px 1px 0 #000000,  
+    -2px 0 0 #000000,
+    2px 0 0 #000000,
+    0 2px 0 #000000,
+    0 -2px 0 #000000; /* Terminate with a semi-colon */
+}
+.sfondo{
+background-image: url("https://staticr1.blastingcdn.com/media/photogallery/2021/7/23/os/b_1200x675/concerti-dal-6-agosto-si-accede-con-il-green-pass-obbligatorio_2647102.jpg");
+background-repeat: no-repeat;
+background-size: cover;
+}
+.floating {
+	font: Tahoma, Geneva, sans-serif;
+	font-size: 64px;
+    color: white;
+    text-shadow:
+    /* Outline */
+    -1px -1px 0 #000000,
+    1px -1px 0 #000000,
+    -1px 1px 0 #000000,
+    1px 1px 0 #000000,  
+    -2px 0 0 #000000,
+    2px 0 0 #000000,
+    0 2px 0 #000000,
+    0 -2px 0 #000000; /* Terminate with a semi-colon */
+  	float: left;
+  	font-size: 150%;
+  	width: 300px;
+  	position: absolute;
+  	top: 250px;
+  	left: 80px;
+}
+
+.boxed {
+  	float: left;
+  	font-size: 150%;
+  	width: 300px;
+  	position: absolute;
+  	top: 90px;
+  	left: 80px;
+  font-size: 35px;
+  color: #ffffff;
+  font-family: 'Zilla Slab Highlight', cursive;
+  text-shadow: 0px 0px 0 rgb(-101,-101,0),
+                 1px 1px  0 rgb(-316,-316,0),
+                 2px 2px 1px rgba(0,0,0,0.16),
+                 2px 2px 1px rgba(0,0,0,0.5),
+                 0px 0px 1px rgba(0,0,0,.2);
+}
+
+.descr{
+    font-size: 25px;
+    color: #ffffff;
+    font-family: Comfortaa, cursive;
+    text-shadow: 0px 0px 0 rgb(40,40,40),
+                 1px 1px  0 rgb(-175,-175,0),
+                 2px 2px 1px rgba(0,0,0,0.22),
+                 2px 2px 1px rgba(0,0,0,0.5),
+                 0px 0px 1px rgba(0,0,0,.2);
+  	float: left;
+  	font-size: 130%;
+  	width: 300px;
+  	position: absolute;
+  	top: 210px;
+  	left: 80px;  	
+  	text-align: left
+  }
+  
+ .gestore {
+  	float: left;
+  	font-size: 150%;
+  	width: 300px;
+  	position: absolute;
+  	top: 90px;
+  	right: 275px;
+  font-size: 35px;
+  color: #ffffff;
+  font-family: 'Zilla Slab Highlight', cursive;
+  text-shadow: 0px 0px 0 rgb(-101,-101,0),
+                 1px 1px  0 rgb(-316,-316,0),
+                 2px 2px 1px rgba(0,0,0,0.16),
+                 2px 2px 1px rgba(0,0,0,0.5),
+        
+                 0px 0px 1px rgba(0,0,0,.2);
+}
+ .info_gest{
+    font-size: 25px;
+    color: #ffffff;
+    font-family: Comfortaa, cursive;
+    text-shadow: 0px 0px 0 rgb(40,40,40),
+                 1px 1px  0 rgb(-175,-175,0),
+                 2px 2px 1px rgba(0,0,0,0.22),
+                 2px 2px 1px rgba(0,0,0,0.5),
+                 0px 0px 1px rgba(0,0,0,.2);
+  	float: left;
+  	font-size: 130%;
+  	width: 400px;
+  	position: absolute;
+  	top: 150px;
+  	right: 105px;  	
+  	text-align: left
+  }
+  
+.cliente{
+  	float: left;
+  	font-size: 150%;
+  	width: 300px;
+  	position: absolute;
+  	top: 430px;
+  	right: 280px;
+  font-size: 35px;
+  color: #ffffff;
+  font-family: 'Zilla Slab Highlight', cursive;
+  text-shadow: 0px 0px 0 rgb(-101,-101,0),
+                 1px 1px  0 rgb(-316,-316,0),
+                 2px 2px 1px rgba(0,0,0,0.16),
+                 2px 2px 1px rgba(0,0,0,0.5),
+                 0px 0px 1px rgba(0,0,0,.2);
+}
+
+ .info_client{
+    font-size: 25px;
+    color: #ffffff;
+    font-family: Comfortaa, cursive;
+    text-shadow: 0px 0px 0 rgb(40,40,40),
+                 1px 1px  0 rgb(-175,-175,0),
+                 2px 2px 1px rgba(0,0,0,0.22),
+                 2px 2px 1px rgba(0,0,0,0.5),
+                 0px 0px 1px rgba(0,0,0,.2);
+  	float: left;
+  	font-size: 130%;
+  	width: 420px;
+  	position: absolute;
+  	top: 490px;
+  	right: 85px;  	
+  	text-align: left
+  }
+ 
+</style>
+</head>
+<body class="sfondo">
+	<div class = "container text-center">
+		<div>
+			<h1 class="OutlineText">Benvenuto su GreenPass Reservation!</h1>
+		</div>
+		<div>
+			<h3> <a th:href="@{/form_registrazione_clienti}">Registrazione Cliente</a></h3>
+			<h3> <a th:href="@{/form_registrazione_gestori}">Registrazione Gestore</a></h3>
+			<h3> <a th:href="@{/login}">Login</a></h3>
+		</div>
+		<div class>
+			<p class = "boxed"><strong> Cos' &#232 GreenPass Reservation? </strong><p>
+  			<p class = "descr">GreenPass Reservation &egrave una piattaforma che ti consente di effettuare prenotazioni a luoghi/eventi certificando la validit&#224 del tuo Green Pass in modalit&agrave del tutto online. <br> <br> Grazie ad essa, potrai evitare di dover mostrare il tuo Green Pass all'ingresso di un evento e potrai accedere immediatamente ad esso, senza incorrere in ulteriori attese.</p>
+  			<p class = "gestore"><strong>GESTORE</strong></p>
+  			<p class = "info_gest">Crea e gestisci i tuoi eventi, consentendo la prenotazione a coloro in possesso di Green Pass in corso di validit&agrave.<br>Non dovrai preoccuparti di effettuare alcun controllo dal vivo, sar&agrave tutto svolto in automatico dalla piattaforma.</p>
+  			<p class = "cliente"><strong>CLIENTE</strong><p>
+  			<p class = "info_client">Prenota il tuo posto agli eventi in cui &egrave richiesto il Green Pass per l'accesso.<br>Una volta registrato, ti baster&agrave inserire i dati del tuo Green Pass in corso di validit&agrave e la piattaforma si occuper&agrave del resto.<br>La prenotazione ti consentir&agrave di accedere all'evento senza dover mostrare il tuo Green Pass. </p>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Prenotazioni Cliente - GreenPass Reservation</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+<script type="text/javascript">
+function clicked(e)
+{
+    if(!confirm('Sei sicuro?')) {
+        e.preventDefault();
+    }
+}
+
+</script>
+<body>
+
+	<div class = "container text-center">
+		<div>
+        <h1>Le mie prenotazioni</h1>
+    </div>
+     
+    <div>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                	<th>Codice prenotazione</th>
+                    <th>Codice evento</th>
+                    <th>Nome evento</th>
+                    <th>Data evento</th>
+                    <th>Orario evento</th>
+                    <th>Luogo evento</th>
+                    <th>Organizzatore evento</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="prenotazione: ${listPrenotazioni}">
+                	<td th:text="${prenotazione.codice_prenotazione}">Codice prenotazione</td>
+                    <td th:text="${prenotazione.codice_evento}">Codice evento</td>
+                    <td th:text="${prenotazione.nome_evento}">Nome</td>
+                    <td th:text="${prenotazione.data_evento}">Data</td>
+                    <td th:text="${prenotazione.orario_evento}">Orario</td>
+                    <td th:text="${prenotazione.luogo_evento}">Luogo</td>
+                    <td th:text="${prenotazione.organizzazione}">Organizzatore</td>
+                  	<td><form th:action="@{/elimina_prenotazione}" method="post">
+						<input type="hidden" name = "codice_evento" th:value = "${prenotazione.codice_evento}" readonly /> 
+						<input type="submit" value = "Elimina" onclick="clicked(event)" style="background-color:white"/> 
+					</form></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    			<h4><a th:href="@{/dashboard_cliente}">Clicca qui per tornare alla dashboard.</a></h4>
+</div>
+
+
+
+</body>
+</html>
